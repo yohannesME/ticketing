@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: "true" # Example annotation, if needed
+spec:
+  rules:
+    - host: ticketing.dev
+      http:
+        paths:
+          - path: /api/users/?(.*) # Corrected regex capture group syntax
+            pathType: Prefix # Added pathType, required in newer Kubernetes versions
+            backend:
+              service:
+                name: auth-srv # Corrected indentation and field name
+                port:
+                  number: 3000 # Corrected indentation and field name
