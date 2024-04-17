@@ -17,3 +17,4 @@ spec:
                 name: auth-srv # Corrected indentation and field name
                 port:
                   number: 3000 # Corrected indentation and field name
+
